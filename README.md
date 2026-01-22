@@ -1,6 +1,4 @@
-# Archivus
-
-## Instalação do Sentence Transformers
+# Instalação do Sentence Transformers
 python3 -m pip install --target /usr/irissys/mgr/python sentence-transformers
 
 # No namespace que se deseja usar o Sentence Transformers
