@@ -1,0 +1,22 @@
+# Sistema Operacional
+.DS_Store
+Thumbs.db
+.directory
+
+# VS Code
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+
+# Logs e Arquivos Temporários
+*.log
+*.tmp
+*.bak
+*.swp
+
+# InterSystems IRIS
+iris.key
+irisfiles/
