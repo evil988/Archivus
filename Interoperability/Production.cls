@@ -10,6 +10,10 @@ XData ProductionDefinition
   </Item>
   <Item Name="Ingestion" Category="" ClassName="Archivus.Interoperability.Operations.Ingestion" PoolSize="1" Enabled="true" Foreground="false" Comment="" LogTraceEvents="false" Schedule="">
   </Item>
+  <Item Name="Search" Category="" ClassName="Archivus.Interoperability.Operations.Search" PoolSize="1" Enabled="true" Foreground="false" Comment="" LogTraceEvents="false" Schedule="">
+  </Item>
+  <Item Name="Router" Category="" ClassName="Archivus.Interoperability.Processes.Router" PoolSize="1" Enabled="true" Foreground="false" Comment="" LogTraceEvents="false" Schedule="">
+  </Item>
 </Production>
 }
 

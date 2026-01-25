@@ -18,7 +18,8 @@ Method OnProcessInput(pInput As %GlobalBinaryStream, Output pOutput As %Register
         Do request.Content.Write(chunk)
     }
 
-    Set tSC = ..SendRequestSync("Ingestion", request, .response)
+    Set tSC = ..SendRequestSync("Router", request, .response)
+    If $$$ISERR(tSC) Return tSC
     
     Set pOutput = ##class(%GlobalCharacterStream).%New()
     Do response.Content.Rewind()
