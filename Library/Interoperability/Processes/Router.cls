@@ -1,4 +1,4 @@
-Class Archivus.Interoperability.Processes.Router Extends Ens.BusinessProcess
+Class Archivus.Library.Interoperability.Processes.Router Extends Ens.BusinessProcess
 {
 
 Property TargetIngestion As Ens.DataType.ConfigName [ InitialExpression = "Ingestion" ];
@@ -7,7 +7,7 @@ Property TargetSearch As Ens.DataType.ConfigName [ InitialExpression = "Search" 
 
 Parameter SETTINGS = "TargetIngestion:Basic,TargetSearch:Basic";
 
-Method OnRequest(pRequest As Archivus.Interoperability.Messages.Input, Output pResponse As Ens.Response) As %Status
+Method OnRequest(pRequest As Archivus.Library.Interoperability.Messages.Input, Output pResponse As Ens.Response) As %Status
 {
     Set tSC = $$$OK
 

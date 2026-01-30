@@ -1,4 +1,4 @@
-Class Archivus.Ingestion.Data Extends %RegisteredObject
+Class Archivus.Library.Data.Ingestion.Entry Extends %RegisteredObject
 {
 
 ClassMethod Insert(pDados As %DynamicObject) As %Status
@@ -9,7 +9,7 @@ ClassMethod Insert(pDados As %DynamicObject) As %Status
         Throw ##class(%Exception.General).%New("Erro de Validação", 500,, "O campo 'texto' é obrigatório.")
     }
 
-    Set obj = ##class(Archivus.DataBase.Support).%New()
+    Set obj = ##class(Archivus.Library.Data.Database.Support).%New()
 
     Set obj.Data = $PIECE($HOROLOG, ",", 1)
     Set obj.Hora = $PIECE($HOROLOG, ",", 2)
@@ -33,7 +33,7 @@ ClassMethod Clear() As %Status
 {
     // w ##class(Archivus.Ingestion.Data).Clear()
     
-    &sql(DELETE FROM Archivus_DataBase.Support)
+    &sql(DELETE FROM Archivus_Library_Data_DataBase.Support)
 
     If (SQLCODE < 0) {
         Quit $$$ERROR($$$SQLError, SQLCODE, %msg)

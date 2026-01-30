@@ -1,4 +1,4 @@
-Class Archivus.Interoperability.Messages.Output Extends Ens.Response
+Class Archivus.Library.Interoperability.Messages.Output Extends Ens.Response
 {
 
 Property Content As %GlobalCharacterStream;

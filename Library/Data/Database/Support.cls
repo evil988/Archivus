@@ -1,4 +1,4 @@
-Class Archivus.DataBase.Support Extends %Library.Persistent
+Class Archivus.Library.Data.Database.Support Extends %Library.Persistent
 {
 
 Property Data As %Date;
@@ -29,23 +29,20 @@ Storage Default
 <Value>Requisicao</Value>
 </Value>
 <Value name="5">
-<Value>Texto</Value>
-</Value>
-<Value name="6">
-<Value>TextoVetor</Value>
-</Value>
-<Value name="7">
-<Value>Arquivo</Value>
-</Value>
-<Value name="8">
 <Value>IdentificacaoExterna</Value>
 </Value>
+<Value name="6">
+<Value>Texto</Value>
+</Value>
+<Value name="7">
+<Value>TextoVetor</Value>
+</Value>
 </Data>
-<DataLocation>^Archivus.DataBase.SupportD</DataLocation>
+<DataLocation>^Archivus.Library.D34DD.SupportD</DataLocation>
 <DefaultData>SupportDefaultData</DefaultData>
-<ExtentSize>10</ExtentSize>
-<IdLocation>^Archivus.DataBase.SupportD</IdLocation>
-<IndexLocation>^Archivus.DataBase.SupportI</IndexLocation>
+<ExtentSize>1</ExtentSize>
+<IdLocation>^Archivus.Library.D34DD.SupportD</IdLocation>
+<IndexLocation>^Archivus.Library.D34DD.SupportI</IndexLocation>
 <Property name="%%CLASSNAME">
 <AverageFieldSize>2</AverageFieldSize>
 <OutlierSelectivity>.999999:</OutlierSelectivity>
@@ -57,32 +54,36 @@ Storage Default
 </Property>
 <Property name="Data">
 <AverageFieldSize>5</AverageFieldSize>
-<OutlierSelectivity>.999999:67592</OutlierSelectivity>
+<OutlierSelectivity>.999999:67599</OutlierSelectivity>
 <Selectivity>0.0001%</Selectivity>
 </Property>
 <Property name="Hora">
 <AverageFieldSize>5</AverageFieldSize>
-<Selectivity>10.0000%</Selectivity>
+<OutlierSelectivity>.999999:79921</OutlierSelectivity>
+<Selectivity>0.0001%</Selectivity>
 </Property>
 <Property name="IdentificacaoExterna">
-<AverageFieldSize>12</AverageFieldSize>
-<Selectivity>10.0000%</Selectivity>
+<AverageFieldSize>13</AverageFieldSize>
+<OutlierSelectivity>.999999:"SICON-12345"</OutlierSelectivity>
+<Selectivity>0.0001%</Selectivity>
 </Property>
 <Property name="Requisicao">
 <AverageFieldSize>4</AverageFieldSize>
-<Selectivity>10.0000%</Selectivity>
+<OutlierSelectivity>.999999:9876</OutlierSelectivity>
+<Selectivity>0.0001%</Selectivity>
 </Property>
 <Property name="Texto">
-<Selectivity>10.0000%</Selectivity>
+<OutlierSelectivity>.999999:$lb("1","%Stream.GlobalCharacter","^Archivus.Library.D34DD.SupportS")</OutlierSelectivity>
+<Selectivity>0.0001%</Selectivity>
 </Property>
 <Property name="TextoVetor">
 <AverageFieldSize>4420</AverageFieldSize>
 <Selectivity>1</Selectivity>
 </Property>
 <SQLMap name="IDKEY">
-<BlockCount>-44</BlockCount>
+<BlockCount>-8</BlockCount>
 </SQLMap>
-<StreamLocation>^Archivus.DataBase.SupportS</StreamLocation>
+<StreamLocation>^Archivus.Library.D34DD.SupportS</StreamLocation>
 <Type>%Storage.Persistent</Type>
 }
 

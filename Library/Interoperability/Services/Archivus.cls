@@ -1,11 +1,11 @@
-Class Archivus.Interoperability.Services.Archivus Extends Ens.BusinessService
+Class Archivus.Library.Interoperability.Services.Archivus Extends Ens.BusinessService
 {
 
 Method OnProcessInput(pInput As %GlobalBinaryStream, Output pOutput As %RegisteredObject) As %Status
 {
     Set tSC = $$$OK
     
-    Set request = ##class(Archivus.Interoperability.Messages.Input).%New()
+    Set request = ##class(Archivus.Library.Interoperability.Messages.Input).%New()
     Set request.Content = ##class(%GlobalCharacterStream).%New()
     
     Do pInput.Rewind()

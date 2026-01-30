@@ -1,4 +1,4 @@
-Class Archivus.Interoperability.Rest Extends %CSP.REST
+Class Archivus.Library.Interoperability.Rest Extends %CSP.REST
 {
 
 XData UrlMap [ XMLNamespace = "http://www.intersystems.com/urlmap" ]
