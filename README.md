@@ -15,3 +15,25 @@ INSERT INTO %Embedding.Config (Name, Configuration, EmbeddingClass, Description)
 chmod -R 777 /home/vboxuser/.cache/huggingface
 chmod o+x /home/vboxuser
 chmod o+x /home/vboxuser/.cache
+
+# Instalação do LangChain
+python3 -m pip install --target /usr/irissys/mgr/python langchain
+
+# Instalação do Groq
+python3 -m pip install --target /usr/irissys/mgr/python langchain-groq
+
+# Chave do Groq
+https://console.groq.com/keys
+
+# Instalação do Python-dotenv
+python3 -m pip install --target /usr/irissys/mgr/python python-dotenv
+
+# Instalação do LangSmith
+python3 -m pip install --target /usr/irissys/mgr/python langsmith
+
+# Configurar o LangSmith
+No dotenv:
+LANGCHAIN_TRACING_V2=true
+LANGCHAIN_API_KEY=sua_chave
+LANGCHAIN_PROJECT=nome_do_projeto
+GROQ_API_KEY=sua_chave
