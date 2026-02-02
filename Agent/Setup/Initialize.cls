@@ -1,22 +1,33 @@
 Class Archivus.Agent.Setup.Initialize Extends %RegisteredObject
 {
 
-/// Inicializa e retorna o Agente Executor
-ClassMethod CreateAgent(llm, tools) As %SYS.Python [ Language = python ]
+ClassMethod Run(inputQuery As %String = "") [ Language = python ]
 {
-    from langchain.agents import initialize_agent, AgentType
+    import iris
+    from langchain_classic.agents import create_structured_chat_agent, AgentExecutor
 
-    agent = initialize_agent(
-        tools, 
-        llm, 
-        agent=AgentType.ZERO_SHOT_REACT_DESCRIPTION, 
-        verbose=True, 
-        handle_parsing_errors=True,
-        max_iterations=5,
-        early_stopping_method="generate"
+    # Configura Ambiente
+    iris.cls("Archivus.Agent.Setup.Environment").Load()
+
+    # Obtém Componentes
+    llm = iris.cls("Archivus.Agent.Setup.Model").GetLLM()
+    prompt = iris.cls("Archivus.Agent.Setup.Prompt").GetPrompt()
+    tools = iris.cls("Archivus.Agent.Setup.Tools").GetTools()
+
+    agent = create_structured_chat_agent(llm=llm, tools=tools, prompt=prompt)
+
+    agent_executor = AgentExecutor(
+        agent=agent,
+        tools=tools,
+        verbose=True,
+        handle_parsing_errors=True
     )
     
-    return agent
+    # Execução do Agent
+    result = agent_executor.invoke({"input": inputQuery})
+
+    # Retorna o output final
+    return result.get("output")
 }
 
 }

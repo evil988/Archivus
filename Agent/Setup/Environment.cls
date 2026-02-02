@@ -1,29 +1,19 @@
 Class Archivus.Agent.Setup.Environment Extends %RegisteredObject
 {
 
-ClassMethod LoadEnv() As %Status [ Language = python ]
+ClassMethod Load() As %Status [ Language = python ]
 {
     import sys
     import os
-    
-    #; Pasta do arquivo dotenv
-    target_dir = '/usr/irissys/mgr/python'
+    from dotenv import load_dotenv
 
-    try:
-        from dotenv import load_dotenv
-        env_path = os.path.join(target_dir, ".env")
+    #; Meu IRIS sempre priorizava o path errado
+    #; import sys
+    sys.path.insert(0, "/usr/irissys/mgr/python")
+    #; ------------------------------------------
 
-        if not os.path.exists(env_path):
-            print(f"Arquivo .env não encontrado em {env_path}")
-            return 0
-        
-        #; Carrega as variáveis de ambiente
-        load_dotenv(dotenv_path=env_path, override=True)
-        return 1
-
-    except Exception as e:
-        print(f"Erro inesperado ao carregar .env: {e}")
-        return 0
+    load_dotenv(dotenv_path="/usr/irissys/mgr/python/.env")
+    return True
 }
 
 }
