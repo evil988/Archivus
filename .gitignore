@@ -20,3 +20,6 @@ Thumbs.db
 # InterSystems IRIS
 iris.key
 irisfiles/
+
+# Others
+samples.txt
