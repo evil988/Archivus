@@ -1,5 +1,5 @@
 # Instalação das dependências
-python3 -m pip install --target /opt/iris/mgr/python langchain langchain-core langchain-community langchain-ollama langchain-groq python-dotenv typing_extensions httpx sentence-transformers
+python3 -m pip install --target /usr/irissys/mgr/python langchain langchain-core langchain-community langchain-ollama langchain-groq python-dotenv sentence-transformers
 
 # No namespace que se deseja usar o Sentence Transformers
 INSERT INTO %Embedding.Config (Name, Configuration, EmbeddingClass, Description)
