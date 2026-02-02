@@ -4,10 +4,11 @@ Class Archivus.Agent.Setup.Initialize Extends %RegisteredObject
 ClassMethod Run(inputQuery As %String = "") [ Language = python ]
 {
     import iris
-    from langchain_classic.agents import create_structured_chat_agent, AgentExecutor
 
     # Configura Ambiente
     iris.cls("Archivus.Agent.Setup.Environment").Load()
+
+    from langchain_classic.agents import create_structured_chat_agent, AgentExecutor
 
     # Obtém Componentes
     llm = iris.cls("Archivus.Agent.Setup.Model").GetLLM()
