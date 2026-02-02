@@ -36,27 +36,11 @@ ClassMethod ProcessRequest(pAction As %String) As %Status [ Private ]
 
 ClassMethod Ingest() As %Status
 {
-    /*
-curl -X POST http://localhost:52773/archivus/ingest \
--H "Content-Type: application/json" \
--d '{
-    "texto": "O lucro líquido subiu 15% no último trimestre devido à redução de custos operacionais.",
-    "identificacao": "SICON-12345",
-    "requisicao": 9876
-}'
-    */
     Quit ..ProcessRequest("ingest")
 }
 
 ClassMethod Search() As %Status
 {
-    /*
-curl -X POST http://localhost:52773/archivus/search \
--H "Content-Type: application/json" \
--d '{
-    "texto": "lucro subiu"
-}'
-    */
     Quit ..ProcessRequest("search")
 }
 
