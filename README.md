@@ -1,5 +1,5 @@
-# Instalação do Sentence Transformers
-python3 -m pip install --target /usr/irissys/mgr/python sentence-transformers
+# Instalação das dependências
+python3 -m pip install --target /opt/iris/mgr/python langchain langchain-core langchain-community langchain-ollama langchain-groq python-dotenv typing_extensions httpx sentence-transformers
 
 # No namespace que se deseja usar o Sentence Transformers
 INSERT INTO %Embedding.Config (Name, Configuration, EmbeddingClass, Description)
@@ -16,20 +16,8 @@ chmod -R 777 /home/vboxuser/.cache/huggingface
 chmod o+x /home/vboxuser
 chmod o+x /home/vboxuser/.cache
 
-# Instalação do LangChain
-python3 -m pip install --target /usr/irissys/mgr/python langchain
-
-# Instalação do Groq
-python3 -m pip install --target /usr/irissys/mgr/python langchain-groq
-
 # Chave do Groq
 https://console.groq.com/keys
-
-# Instalação do Python-dotenv
-python3 -m pip install --target /usr/irissys/mgr/python python-dotenv
-
-# Instalação do LangSmith
-python3 -m pip install --target /usr/irissys/mgr/python langsmith
 
 # Configurar o LangSmith
 No dotenv:
