@@ -29,17 +29,4 @@ ClassMethod Insert(pDados As %DynamicObject) As %Status
     Quit tSC
 }
 
-ClassMethod Clear() As %Status
-{
-    // w ##class(Archivus.Ingestion.Data).Clear()
-    
-    &sql(DELETE FROM Archivus_Library_Data_DataBase.Support)
-
-    If (SQLCODE < 0) {
-        Quit $$$ERROR($$$SQLError, SQLCODE, %msg)
-    }
-
-    Quit $$$OK
-}
-
 }
