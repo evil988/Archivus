@@ -12,9 +12,8 @@ ClassMethod Insert(pDados As %DynamicObject) As %Status
     Set obj = ##class(Archivus.Library.Data.Database.Support).%New()
 
     Set obj.Data = $PIECE($HOROLOG, ",", 1)
-    Set obj.Hora = $PIECE($HOROLOG, ",", 2)
-
-    Do obj.Texto.Write(pDados.texto)
+    Set obj.Hora = $PIECE($HOROLOG, ",", 2) 
+    Set obj.Texto = pDados.texto
 
     If (pDados.identificacao '= "") {
         Set obj.IdentificacaoExterna = pDados.identificacao

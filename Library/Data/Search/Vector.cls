@@ -11,7 +11,7 @@ ClassMethod VectorDotProduct(pInput As %String, pTop As %Integer = 5) As %Dynami
 
     Set tQuery =    "SELECT TOP ? ID, Requisicao, IdentificacaoExterna, Texto " _
                     "FROM Archivus_Library_Data_DataBase.Support " _
-                    "ORDER BY VECTOR_DOT_PRODUCT(TextoVetor, EMBEDDING(?)) DESC"
+                    "ORDER BY VECTOR_DOT_PRODUCT(TextoVetor, EMBEDDING(?, 'sentence-transformers-config')) DESC"
     
     Set tStatus = tStatement.%Prepare(tQuery)
     $$$ThrowOnError(tStatus)
@@ -28,9 +28,7 @@ ClassMethod VectorDotProduct(pInput As %String, pTop As %Integer = 5) As %Dynami
         Set tRow.Requisicao = tResultSet.Requisicao
         Set tRow.IdentificacaoExterna = tResultSet.IdentificacaoExterna
         
-        Set tStreamOid = ##class(%Stream.GlobalCharacter).%Open(tResultSet.Texto)
-        Do tStreamOid.Rewind()
-        Set tRow.Texto = tStreamOid.Read()
+        Set tRow.Texto = tResultSet.Texto
         
         Do tResultArray.%Push(tRow)
     }
