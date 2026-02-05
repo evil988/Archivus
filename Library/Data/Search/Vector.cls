@@ -1,7 +1,6 @@
 Class Archivus.Library.Data.Search.Vector Extends %RegisteredObject
 {
 
-/// VECTOR_DOT_PRODUCT
 ClassMethod VectorDotProduct(pInput As %String, pTop As %Integer = 5) As %DynamicArray
 {
     // set array = ##class(Archivus.Library.Data.Search.Vector).VectorDotProduct("aumento de lucros no trimestre", 5)
