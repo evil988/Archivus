@@ -11,7 +11,7 @@ ClassMethod VectorDotProduct(pInput As %String, pTop As %Integer = 5) As %Dynami
 
     Set tQuery =    "SELECT TOP ? ID, Requisicao, IdentificacaoExterna, Texto " _
                     "FROM Archivus_Library_Data_DataBase.Support " _
-                    "ORDER BY VECTOR_DOT_PRODUCT(TextoVetor, EMBEDDING(?, 'sentence-transformers-config')) DESC"
+                    "ORDER BY VECTOR_DOT_PRODUCT(TextoVetor, EMBEDDING(?, 'multilingual-config')) DESC"
     
     Set tStatus = tStatement.%Prepare(tQuery)
     $$$ThrowOnError(tStatus)
