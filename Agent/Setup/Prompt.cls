@@ -1,7 +1,7 @@
 Class Archivus.Agent.Setup.Prompt Extends %RegisteredObject
 {
 
-ClassMethod GetPrompt(hubPath As %String = "hwchase17/structured-chat-agent") [ Language = python ]
+ClassMethod GetPrompt(hubPath As %String = "hwchase17/react") [ Language = python ]
 {
     from langchain_classic import hub
     
