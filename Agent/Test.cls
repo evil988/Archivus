@@ -60,8 +60,8 @@ ClassMethod TestReact() [ Language = python ]
 #; w ##class(Archivus.Agent.Test).TestReact()
 
 #; Meu IRIS sempre priorizava o path errado
-import sys
-sys.path.insert(0, "/usr/irissys/mgr/python")
+#; import sys
+#; sys.path.insert(0, "/usr/irissys/mgr/python")
 #; ------------------------------------------
 
 # Import necessary libraries
