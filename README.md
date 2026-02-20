@@ -10,12 +10,23 @@ INSERT INTO %Embedding.Config (Name, Configuration, EmbeddingClass, Description)
 VALUES (
   'multilingual-config',
   '{"modelName":"sentence-transformers/paraphrase-multilingual-mpnet-base-v2", 
-    "hfCachePath":"/tmp/hf_cache", 
+    "hfCachePath":"/tmp/hf_cache/paraphrase-multilingual-mpnet-base-v2", 
     "maxTokens": 256, 
     "checkTokenCount": true}',
   '%Embedding.SentenceTransformers',
   'Modelo multilíngue'
 )
+
+ou
+
+INSERT INTO %Embedding.Config (Name, Configuration, EmbeddingClass, Description)
+  VALUES ('sentence-transformers-config',
+          '{"modelName":"sentence-transformers/all-MiniLM-L6-v2",
+            "hfCachePath":"/tmp/hf_cache/all-MiniLM-L6-v2",
+            "maxTokens": 256,
+            "checkTokenCount": true}',
+          '%Embedding.SentenceTransformers',
+          'a small SentenceTransformers embedding model')
 
 # Caso você tenha problemas de permissão no cache do huggingface:
 chmod -R 777 /home/vboxuser/.cache/huggingface
