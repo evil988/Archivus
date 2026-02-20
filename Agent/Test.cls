@@ -6,6 +6,26 @@ do ##class(%SYS.Python).Shell()
 import sys
 print(sys.path)
 */
+ClassMethod TestGemini() [ Language = python ]
+{
+    #; w ##class(Archivus.Agent.Test).TestGemini()
+    from langchain_google_genai import ChatGoogleGenerativeAI
+    import os
+    from dotenv import load_dotenv
+
+    env_path = "/usr/irissys/mgr/archivus/.env"
+    load_dotenv(env_path)
+
+    llm = ChatGoogleGenerativeAI(
+        model="gemini-2.5-flash",
+        temperature=0,
+        max_tokens=8192
+    )
+
+    resposta = llm.invoke("Explique como funciona o LangChain em português.")
+    print(resposta.content)
+}
+
 /// Test the initialization of a Groq agent with a simple question
 ClassMethod TestGroq() [ Language = python ]
 {
@@ -19,15 +39,16 @@ ClassMethod TestGroq() [ Language = python ]
     import os
     from dotenv import load_dotenv
     
-    # Define expected path for .env
+    #; # Define expected path for .env
     env_path = "/usr/irissys/mgr/archivus/.env"
+    load_dotenv(env_path)
     
-    # Load environment variables
-    if os.path.exists(env_path):
-        load_dotenv(env_path)
-        print(f"Environment loaded from {env_path}")
-    else:
-        print(f"Warning: .env not found at {env_path}")
+    #; # Load environment variables
+    #; if os.path.exists(env_path):
+    #;     load_dotenv(env_path)
+    #;     print(f"Environment loaded from {env_path}")
+    #; else:
+    #;     print(f"Warning: .env not found at {env_path}")
         
     try:
         from langchain_groq import ChatGroq
