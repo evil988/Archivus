@@ -6,7 +6,7 @@ ClassMethod Load() As %Status [ Language = python ]
     import sys
     import os
 
-    custom_path = "/usr/irissys/mgr/python"
+    custom_path = "/usr/irissys/mgr/archivus"
     
     #; Garante prioridade no sys.path (evita duplicatas e mantem no topo)
     if custom_path in sys.path:
