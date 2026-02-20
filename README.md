@@ -42,3 +42,11 @@ LANGCHAIN_TRACING_V2=true
 LANGCHAIN_API_KEY=sua_chave
 LANGCHAIN_PROJECT=nome_do_projeto
 GROQ_API_KEY=sua_chave
+
+# Docker
+docker run -d \
+  --name iris \
+  -p 1972:1972 \
+  -p 52773:52773 \
+  --shm-size=256m \
+  intersystems/iris-community:latest-cd
