@@ -15,7 +15,7 @@ ClassMethod Insert(pDados As %DynamicObject) As %Status
     Set obj.Hora = $PIECE($HOROLOG, ",", 2) 
     Set obj.Texto = pDados.texto
     
-    Set tVecString = ..GetGeminiEmbedding(pDados.texto)
+    Set tVecString = ..GetEmbedding(pDados.texto)
     If ($EXTRACT(tVecString, 1, 5) = "ERROR") {
         Throw ##class(%Exception.General).%New("GenAI", 500,, "Erro gerando Embeddings: " _ tVecString)
     }
@@ -41,7 +41,7 @@ ClassMethod Insert(pDados As %DynamicObject) As %Status
     Quit tSC
 }
 
-ClassMethod GetGeminiEmbedding(pTexto As %String) As %String [ Language = python ]
+ClassMethod GetEmbedding(pTexto As %String) As %String [ Language = python ]
 {
     import iris
     iris.cls('Archivus.Environment').Load()
