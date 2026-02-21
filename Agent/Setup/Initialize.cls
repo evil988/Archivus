@@ -5,12 +5,12 @@ ClassMethod Run(inputQuery As %String = "") [ Language = python ]
 {
     import iris
 
-    # Configura Ambiente
+    #; Configura Ambiente
     iris.cls("Archivus.Agent.Setup.Environment").Load()
 
     from langchain_classic.agents import create_react_agent, AgentExecutor
 
-    # Obtém Componentes
+    #; Obtém Componentes
     llm = iris.cls("Archivus.Agent.Setup.Model").GetLLM()
     prompt = iris.cls("Archivus.Agent.Setup.Prompt").GetPrompt()
     tools = iris.cls("Archivus.Agent.Setup.Tools").GetTools()
@@ -24,10 +24,10 @@ ClassMethod Run(inputQuery As %String = "") [ Language = python ]
         handle_parsing_errors=True
     )
     
-    # Execução do Agent
+    #; Execução do Agent
     result = agent_executor.invoke({"input": inputQuery})
 
-    # Retorna o output final
+    #; Retorna o output final
     return result.get("output")
 }
 
