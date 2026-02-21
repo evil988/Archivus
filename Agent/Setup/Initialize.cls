@@ -21,7 +21,8 @@ ClassMethod Run(inputQuery As %String = "") [ Language = python ]
         agent=agent,
         tools=tools,
         verbose=True,
-        handle_parsing_errors=True
+        handle_parsing_errors=True,
+        max_iterations=10
     )
     
     #; Execução do Agent
