@@ -11,7 +11,7 @@ Property IdentificacaoExterna As %Library.String(MAXLEN = 50);
 
 Property Texto As %String(MAXLEN = 32767);
 
-Property TextoVetor As %Library.Embedding(MODEL = "multilingual-config", SOURCE = "Texto");
+Property TextoVetor As %Vector(DATATYPE = "DOUBLE", LEN = 768);
 
 Storage Default
 {
