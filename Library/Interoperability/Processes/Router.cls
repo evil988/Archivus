@@ -5,7 +5,9 @@ Property TargetIngestion As Ens.DataType.ConfigName [ InitialExpression = "Inges
 
 Property TargetSearch As Ens.DataType.ConfigName [ InitialExpression = "Search" ];
 
-Parameter SETTINGS = "TargetIngestion:Basic,TargetSearch:Basic";
+Property TargetEmbedding As Ens.DataType.ConfigName [ InitialExpression = "Embedding" ];
+
+Parameter SETTINGS = "TargetIngestion:Basic,TargetSearch:Basic,TargetEmbedding:Basic";
 
 Method OnRequest(pRequest As Archivus.Library.Interoperability.Messages.Input, Output pResponse As Ens.Response) As %Status
 {
@@ -21,6 +23,21 @@ Method OnRequest(pRequest As Archivus.Library.Interoperability.Messages.Input, O
         Set tTarget = "Search"
     } Else {
         Throw ##class(%Exception.General).%New("Router Error", 500,, "Ação desconhecida ou não fornecida: "_tJson.action)
+    }
+
+    // Call Embedding if texto exists
+    If (tJson.texto '= "") {
+        Set tEmbeddingReq = ##class(Archivus.Library.Interoperability.Messages.EmbeddingRequest).%New()
+        Set tEmbeddingReq.Text = tJson.texto
+        
+        Set tSC = ..SendRequestSync(..TargetEmbedding, tEmbeddingReq, .tEmbeddingRes)
+        $$$ThrowOnError(tSC)
+        
+        Set tJson.vector = tEmbeddingRes.VectorString
+        
+        Set tNewStream = ##class(%GlobalCharacterStream).%New()
+        Do tNewStream.Write(tJson.%ToJSON())
+        Set pRequest.Content = tNewStream
     }
 
     Do pRequest.Content.Rewind()
@@ -39,6 +56,9 @@ Storage Default
 </Value>
 <Value name="2">
 <Value>TargetSearch</Value>
+</Value>
+<Value name="3">
+<Value>TargetEmbedding</Value>
 </Value>
 </Data>
 <DefaultData>RouterDefaultData</DefaultData>

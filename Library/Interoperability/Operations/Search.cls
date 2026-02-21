@@ -11,7 +11,7 @@ Method OnMessage(pRequest As Archivus.Library.Interoperability.Messages.Input, O
         Throw ##class(%Exception.General).%New("Erro de Validação", 500,, "O campo 'texto' é obrigatório para a busca.")
     }
     
-    Set tResultArray = ##class(Archivus.Library.Data.Search.Vector).VectorDotProduct(tJsonInput.texto)
+    Set tResultArray = ##class(Archivus.Library.Data.Search.Vector).VectorDotProduct(tJsonInput.vector)
 
     Set pResponse = ##class(Archivus.Library.Interoperability.Messages.Output).%New()
     Set pResponse.Content = ##class(%GlobalCharacterStream).%New()

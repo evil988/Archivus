@@ -1,9 +1,9 @@
 Class Archivus.Library.Data.Search.Vector Extends %RegisteredObject
 {
 
-ClassMethod VectorDotProduct(pInput As %String, pTop As %Integer = 5) As %DynamicArray
+ClassMethod VectorDotProduct(pVectorString As %String, pTop As %Integer = 5) As %DynamicArray
 {
-    // set array = ##class(Archivus.Library.Data.Search.Vector).VectorDotProduct("aumento de lucros no trimestre", 5)
+    // set array = ##class(Archivus.Library.Data.Search.Vector).VectorDotProduct("[...]", 5)
 
     Set tResultArray = ##class(%DynamicArray).%New()
     Set tStatement = ##class(%SQL.Statement).%New()
@@ -15,9 +15,7 @@ ClassMethod VectorDotProduct(pInput As %String, pTop As %Integer = 5) As %Dynami
     Set tStatus = tStatement.%Prepare(tQuery)
     $$$ThrowOnError(tStatus)
 
-    Set tVector = ##class(Archivus.Library.Data.Embedding).GetEmbedding(pInput)
-
-    Set tResultSet = tStatement.%Execute(pTop, tVector)
+    Set tResultSet = tStatement.%Execute(pTop, pVectorString)
 
     If (tResultSet.%SQLCODE < 0) {
         Throw ##class(%Exception.SQL).CreateFromSQLCODE(tResultSet.%SQLCODE, tResultSet.%Message)

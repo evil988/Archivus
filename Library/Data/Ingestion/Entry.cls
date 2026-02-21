@@ -15,10 +15,7 @@ ClassMethod Insert(pDados As %DynamicObject) As %Status
     Set obj.Hora = $PIECE($HOROLOG, ",", 2) 
     Set obj.Texto = pDados.texto
     
-    Set tVecString = ##class(Archivus.Library.Data.Embedding).GetEmbedding(pDados.texto)
-    If ($EXTRACT(tVecString, 1, 5) = "ERROR") {
-        Throw ##class(%Exception.General).%New("GenAI", 500,, "Erro gerando Embeddings: " _ tVecString)
-    }
+    Set tVecString = pDados.vector
 
     Set tStatement = ##class(%SQL.Statement).%New()
     Set tStatus = tStatement.%Prepare("SELECT TO_VECTOR(?, DOUBLE, 768) AS Vec")

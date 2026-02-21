@@ -8,6 +8,8 @@ XData ProductionDefinition
   <ActorPoolSize>2</ActorPoolSize>
   <Item Name="Archivus" Category="" ClassName="Archivus.Library.Interoperability.Services.Archivus" PoolSize="1" Enabled="true" Foreground="false" Comment="" LogTraceEvents="false" Schedule="">
   </Item>
+  <Item Name="Embedding" Category="" ClassName="Archivus.Library.Interoperability.Operations.Embedding" PoolSize="1" Enabled="true" Foreground="false" Comment="" LogTraceEvents="false" Schedule="">
+  </Item>
   <Item Name="Ingestion" Category="" ClassName="Archivus.Library.Interoperability.Operations.Ingestion" PoolSize="1" Enabled="true" Foreground="false" Comment="" LogTraceEvents="false" Schedule="">
   </Item>
   <Item Name="Search" Category="" ClassName="Archivus.Library.Interoperability.Operations.Search" PoolSize="1" Enabled="true" Foreground="false" Comment="" LogTraceEvents="false" Schedule="">
