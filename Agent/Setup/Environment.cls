@@ -1,21 +1,21 @@
 Class Archivus.Agent.Setup.Environment Extends %RegisteredObject
 {
 
-ClassMethod Load() As %Status [ Language = python ]
+ClassMethod Load(customPath As %String = "/usr/irissys/mgr/archivus") As %Boolean [ Language = python ]
 {
-    import sys
     import os
 
-    custom_path = "/usr/irissys/mgr/archivus"
+    env_file = os.path.join(customPath, ".env")
     
-    #; Garante prioridade no sys.path (evita duplicatas e mantem no topo)
-    #; if custom_path in sys.path:
-    #;     sys.path.remove(custom_path)
-    #; sys.path.insert(0, custom_path)
-    
-    from dotenv import load_dotenv
-    load_dotenv(dotenv_path=os.path.join(custom_path, ".env"))
-    return True
+    if not os.path.isfile(env_file):
+        return 0
+
+    try:
+        from dotenv import load_dotenv
+        result = load_dotenv(dotenv_path=env_file, override=True)
+        return 1 if result else 0
+    except Exception as e:
+        return 0
 }
 
 }
