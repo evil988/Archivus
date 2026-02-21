@@ -15,7 +15,7 @@ ClassMethod Insert(pDados As %DynamicObject) As %Status
     Set obj.Hora = $PIECE($HOROLOG, ",", 2) 
     Set obj.Texto = pDados.texto
     
-    Set tVecString = ..GetEmbedding(pDados.texto)
+    Set tVecString = ##class(Archivus.Library.Data.Embedding).GetEmbedding(pDados.texto)
     If ($EXTRACT(tVecString, 1, 5) = "ERROR") {
         Throw ##class(%Exception.General).%New("GenAI", 500,, "Erro gerando Embeddings: " _ tVecString)
     }
@@ -39,27 +39,6 @@ ClassMethod Insert(pDados As %DynamicObject) As %Status
     Set tSC = obj.%Save()
 
     Quit tSC
-}
-
-ClassMethod GetEmbedding(pTexto As %String) As %String [ Language = python ]
-{
-    import iris
-    iris.cls('Archivus.Environment').Load()
-
-    from langchain_google_genai import GoogleGenerativeAIEmbeddings
-    
-    import os
-    if not os.environ.get("GOOGLE_API_KEY"):
-        return "ERROR: GOOGLE_API_KEY missing after load"
-        
-    embeddings = GoogleGenerativeAIEmbeddings(model="models/gemini-embedding-001")
-
-    try:
-        vec = embeddings.embed_query(pTexto)
-        # Return string representation of the list [x, y, z...] which IRIS accepts for %Vector
-        return str(vec)
-    except Exception as e:
-        return str(e)
 }
 
 }

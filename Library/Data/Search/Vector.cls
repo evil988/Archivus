@@ -15,7 +15,7 @@ ClassMethod VectorDotProduct(pInput As %String, pTop As %Integer = 5) As %Dynami
     Set tStatus = tStatement.%Prepare(tQuery)
     $$$ThrowOnError(tStatus)
 
-    Set tVector = ##class(Archivus.Library.Data.Ingestion.Entry).GetEmbedding(pInput)
+    Set tVector = ##class(Archivus.Library.Data.Embedding).GetEmbedding(pInput)
 
     Set tResultSet = tStatement.%Execute(pTop, tVector)
 
