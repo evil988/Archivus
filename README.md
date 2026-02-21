@@ -6,7 +6,7 @@ INSERT INTO %Embedding.Config (Name, Configuration, EmbeddingClass, Description)
 VALUES (
   'multilingual-config',
   '{"modelName":"sentence-transformers/paraphrase-multilingual-mpnet-base-v2", 
-    "hfCachePath":"/tmp/hf_cache/paraphrase-multilingual-mpnet-base-v2", 
+    "hfCachePath":"/tmp/hf_cache", 
     "maxTokens": 256, 
     "checkTokenCount": true}',
   '%Embedding.SentenceTransformers',
