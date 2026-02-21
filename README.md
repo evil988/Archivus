@@ -1,4 +1,4 @@
-# Instalação das dependências
+# Dependências
 python3 -m pip install --target /usr/irissys/mgr/python langchain langchain-core langchain-community langchain-classic langchain-ollama langchain-groq python-dotenv langchain-google-genai sentence-transformers
 
 # No namespace que se deseja usar o Sentence Transformers
