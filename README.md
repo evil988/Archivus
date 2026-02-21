@@ -1,9 +1,5 @@
 # Instalação das dependências
-python3 -m pip install --target /usr/irissys/mgr/python langchain langchain-core langchain-community langchain-classic langchain-ollama langchain-groq python-dotenv langchain-google-genai sentence-transformers 
-
-ou
-
-python3 -m pip install --target /opt/iris/mgr/python langchain langchain-core langchain-community langchain-classic langchain-ollama langchain-groq python-dotenv langchain-google-genai sentence-transformers
+python3 -m pip install --target /usr/irissys/mgr/python langchain langchain-core langchain-community langchain-classic langchain-ollama langchain-groq python-dotenv langchain-google-genai sentence-transformers
 
 # No namespace que se deseja usar o Sentence Transformers
 INSERT INTO %Embedding.Config (Name, Configuration, EmbeddingClass, Description) 
@@ -16,22 +12,6 @@ VALUES (
   '%Embedding.SentenceTransformers',
   'Modelo multilíngue'
 )
-
-ou
-
-INSERT INTO %Embedding.Config (Name, Configuration, EmbeddingClass, Description)
-  VALUES ('sentence-transformers-config',
-          '{"modelName":"sentence-transformers/all-MiniLM-L6-v2",
-            "hfCachePath":"/tmp/hf_cache/all-MiniLM-L6-v2",
-            "maxTokens": 256,
-            "checkTokenCount": true}',
-          '%Embedding.SentenceTransformers',
-          'a small SentenceTransformers embedding model')
-
-# Caso você tenha problemas de permissão no cache do huggingface:
-chmod -R 777 /home/vboxuser/.cache/huggingface
-chmod o+x /home/vboxuser
-chmod o+x /home/vboxuser/.cache
 
 # Chave do Groq
 https://console.groq.com/keys
