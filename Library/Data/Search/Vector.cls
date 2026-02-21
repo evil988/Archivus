@@ -9,13 +9,15 @@ ClassMethod VectorDotProduct(pInput As %String, pTop As %Integer = 5) As %Dynami
     Set tStatement = ##class(%SQL.Statement).%New()
 
     Set tQuery =    "SELECT TOP ? ID, Requisicao, IdentificacaoExterna, Texto " _
-                    "FROM Archivus_Library_Data_DataBase.Support " _
-                    "ORDER BY VECTOR_DOT_PRODUCT(TextoVetor, EMBEDDING(?, 'multilingual-config')) DESC"
+                    "FROM Archivus_Library_Data_Database.Support " _
+                    "ORDER BY VECTOR_DOT_PRODUCT(TextoVetor, TO_VECTOR(?, DOUBLE, 768)) DESC"
     
     Set tStatus = tStatement.%Prepare(tQuery)
     $$$ThrowOnError(tStatus)
 
-    Set tResultSet = tStatement.%Execute(pTop, pInput)
+    Set tVector = ##class(Archivus.Library.Data.Ingestion.Entry).GetGeminiEmbedding(pInput)
+
+    Set tResultSet = tStatement.%Execute(pTop, tVector)
 
     If (tResultSet.%SQLCODE < 0) {
         Throw ##class(%Exception.SQL).CreateFromSQLCODE(tResultSet.%SQLCODE, tResultSet.%Message)
