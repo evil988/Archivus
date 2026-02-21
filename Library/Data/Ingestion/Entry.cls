@@ -44,7 +44,7 @@ ClassMethod Insert(pDados As %DynamicObject) As %Status
 ClassMethod GetGeminiEmbedding(pTexto As %String) As %String [ Language = python ]
 {
     import iris
-    iris.cls('Archivus.Agent.Setup.Environment').Load()
+    iris.cls('Archivus.Environment').Load()
 
     from langchain_google_genai import GoogleGenerativeAIEmbeddings
     

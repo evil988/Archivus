@@ -6,7 +6,7 @@ ClassMethod Run(inputQuery As %String = "") [ Language = python ]
     import iris
 
     #; Configura Ambiente
-    iris.cls("Archivus.Agent.Setup.Environment").Load()
+    iris.cls("Archivus.Environment").Load()
 
     from langchain_classic.agents import create_structured_chat_agent, AgentExecutor
 

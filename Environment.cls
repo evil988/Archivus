@@ -1,4 +1,4 @@
-Class Archivus.Agent.Setup.Environment Extends %RegisteredObject
+Class Archivus.Environment Extends %RegisteredObject
 {
 
 ClassMethod Load(customPath As %String = "/usr/irissys/mgr/archivus") As %Boolean [ Language = python ]

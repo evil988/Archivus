@@ -133,7 +133,7 @@ ClassMethod TestReact2() [ Language = python ]
     from langchain_classic.agents import create_structured_chat_agent, AgentExecutor
 
     # Configura Ambiente
-    iris.cls("Archivus.Agent.Setup.Environment").Load()
+    iris.cls("Archivus.Environment").Load()
 
     # Obtém Componentes
     llm = iris.cls("Archivus.Agent.Setup.Model").GetLLM()
@@ -170,7 +170,7 @@ ClassMethod TestLocalAgent(inputQuery As %String = "Quanto é 70+30?") As %Strin
     import time
     
     # 1. Carregar Variáveis de Ambiente e Paths
-    iris.cls("Archivus.Agent.Setup.Environment").Load()
+    iris.cls("Archivus.Environment").Load()
 
     from langchain_ollama import ChatOllama
     from langchain_classic.agents import create_react_agent, AgentExecutor
@@ -245,7 +245,7 @@ ClassMethod ReactLocal(inputQuery As %String = "Quem é o presidente do Brasil?"
     
     # 1. Carregar Variáveis de Ambiente e Paths
     # Utiliza a configuração centralizada existente
-    iris.cls("Archivus.Agent.Setup.Environment").Load()
+    iris.cls("Archivus.Environment").Load()
 
     from langchain_ollama import ChatOllama
     from langchain_classic.agents import create_structured_chat_agent, AgentExecutor
