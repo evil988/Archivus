@@ -3,7 +3,7 @@ Class Archivus.Agent.Setup.Tools Extends %RegisteredObject
 
 ClassMethod GetTools() [ Language = python ]
 {
-    from langchain_core.tools import Tool
+    from langchain_core.tools import tool
     
     @tool
     def add_numbers(number1: float, number2: float) -> str:
