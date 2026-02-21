@@ -1,15 +1,19 @@
 Class Archivus.Agent.Setup.Model Extends %RegisteredObject
 {
 
-ClassMethod GetLLM(modelName As %String = "llama-3.3-70b-versatile") [ Language = python ]
+ClassMethod GetLLM(pModelName As %String = "gemini-3-flash", pTemperature As %Float = 0, pMaxTokens As %Integer = 1024) As %RegisteredObject [ Language = python ]
 {
-    from langchain_groq import ChatGroq
+    import iris
+    from langchain_google_genai import ChatGoogleGenerativeAI
     
     try:
-        llm = ChatGroq(model=modelName)
+        llm = ChatGoogleGenerativeAI(model=pModelName, temperature=pTemperature, max_tokens=pMaxTokens)
         return llm
+
+    except ImportError as e:
+        return None
+
     except Exception as e:
-        print(f"Erro ao iniciar LLM: {e}")
         return None
 }
 
